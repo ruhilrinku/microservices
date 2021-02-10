@@ -1,0 +1,40 @@
+server:
+  port: 9191
+
+spring:
+  application:
+    name: API-GATEWAY
+    
+zuul:
+  routes:
+    DEPARTMENT-SERVICE:
+      path: /departments/**
+      service-id: DEPARTMENT-SERVICE
+      strip-prefix: false
+    USER-SERVICE:
+      path: /users/**
+      service-id: USER-SERVICE
+      strip-prefix: false
+      
+hystrix:
+  command:
+    DEPARTMENT-SERVICE:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 4000
+    USER-SERVICE:       
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 4000
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+      hostname: localhost
+      

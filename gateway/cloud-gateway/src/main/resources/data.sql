@@ -1,0 +1,1 @@
+INSERT INTO User (id, firstname, lastname, username, password, salary, age) VALUES (1, 'nishant','nishant', 'nipun','$2a$04$4vwa/ugGbBVDvbWaKUVZBuJbjyQyj6tqntjSmG8q.hi97.xSdhj/2', 3456, 32);
